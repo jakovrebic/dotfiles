@@ -105,3 +105,11 @@ alias k="kubectl"
 # additional exports
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+
+# Autocomplete for Kubernetes
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+# Autocomplete for Openshift
+if [ /opt/homebrew/bin/oc ]; then
+  source <(oc completion zsh)
+  compdef _oc oc
+fi
